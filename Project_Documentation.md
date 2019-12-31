@@ -4,15 +4,24 @@
 Project is to gather all immigration data of US along with dimensions like demogprahics, airports, states, temperatures, and create a dataware house with facts and dimensions. This project will be carried out using Spark and, fact and dimension tables are created as parquet files. 
 
 ## Describe source data
-**I94 Immigration Data**: This data comes from the US National Tourism and Trade Office.This data comes from the US National Tourism and Trade Office. 
-**World Temperature Data**: Global temperature data by City. This dataset came from Kaggle
-**airport-codes**: This is a simple table of airport codes and corresponding cities. This data comes from datahub.io
-**airports**: Contains City and State of US airport codes. This data is taken from I94_SAS_Labels_Description.SAS
-**countries**: Country code and country names of all countries in the I94 immigration data. This data is taken from I94_SAS_Labels_Description.SAS
-**modes**: Different types of travel modes. This data is taken from I94_SAS_Labels_Description.SAS
-**U.S. City Demographic Data**: comes from OpenSoft and includes data by city, state, age, population, veteran status and race.
-**US states**: Contains all states in US. This data is taken from I94_SAS_Labels_Description.SAS
-**visa**: Contains different visa types. This data is taken from I94_SAS_Labels_Description.SAS
+##### **I94 Immigration Data**: 
+This data comes from the US National Tourism and Trade Office.This data comes from the US National Tourism and Trade Office. 
+##### **World Temperature Data**: 
+Global temperature data by City. This dataset came from Kaggle
+##### **airport-codes**: 
+This is a simple table of airport codes and corresponding cities. This data comes from datahub.io
+##### **airports**: 
+Contains City and State of US airport codes. This data is taken from I94_SAS_Labels_Description.SAS
+##### **countries**: 
+Country code and country names of all countries in the I94 immigration data. This data is taken from I94_SAS_Labels_Description.SAS
+##### **modes**: 
+Different types of travel modes. This data is taken from I94_SAS_Labels_Description.SAS
+##### **U.S. City Demographic Data**: 
+comes from OpenSoft and includes data by city, state, age, population, veteran status and race.
+##### **US states**: 
+Contains all states in US. This data is taken from I94_SAS_Labels_Description.SAS
+##### **visa**: 
+Contains different visa types. This data is taken from I94_SAS_Labels_Description.SAS
 
 ## Explore and assess data
 ### Common cleansing
@@ -26,7 +35,7 @@ Project is to gather all immigration data of US along with dimensions like demog
 
 ## Data Model
 ### Fact: immigration
-immigration
+**immigration**
  |-- cic_id: integer (nullable = true)
  |-- arrival_date: date (nullable = true)
  |-- visa_category: integer (nullable = true)
@@ -43,7 +52,7 @@ immigration
  |-- month: integer (nullable = true)
  
  ## Dimensions
- airport_codes
+ **airport_codes**
  |-- ident: string (nullable = true)
  |-- type: string (nullable = true)
  |-- name: string (nullable = true)
@@ -52,15 +61,15 @@ immigration
  |-- iso_region: string (nullable = true)
  |-- municipality: string (nullable = true)
  
- airports
+ **airports**
  |-- code: string (nullable = true)
  |-- city_name: string (nullable = true)
 
-countries
+**countries**
  |-- country_code: integer (nullable = true)
  |-- country_name: string (nullable = true)
 
-us_demographics
+**us_demographics**
  |-- City: string (nullable = true)
  |-- State: string (nullable = true)
  |-- Median_Age: double (nullable = true)
@@ -74,16 +83,16 @@ us_demographics
  |-- Race: string (nullable = true)
  |-- Count: integer (nullable = true)
  
- modes
+ **modes**
  |-- code: integer (nullable = true)
  |-- mode_name: string (nullable = true)
  
- US_States
+ **US_States**
  |-- state_code: string (nullable = true)
  |-- state_name: string (nullable = true)
  
  
- GlobalLandTemperaturesByCity
+ **GlobalLandTemperaturesByCity**
  |-- dt: timestamp (nullable = true)
  |-- AverageTemperature: double (nullable = true)
  |-- AverageTemperatureUncertainty: double (nullable = true)
@@ -93,7 +102,7 @@ us_demographics
  |-- Longitude: string (nullable = true)
 
 
-visa
+**visa**
  |-- code: integer (nullable = true)
  |-- visa: string (nullable = true)
  
@@ -101,7 +110,7 @@ visa
 
 ETL is design as a framework in which common ETL functionalities across all targets are in it and then individual table based handlers to handle the table specific ETL processes. The entire flow is made to orchestrate from a config file. If any new dimensions or facts tables to be added in the future, it will be only a delta effort to create their new respective table handlers,  updating the config file with those details and including those tables in the execution flow. 
 
-**Execution flow**:                                                                                                     
+### **Execution flow**:                                                                                                     
   1. config.cfg file orchestrates the flow of ETL process.                                                          
   2. FLOW section gives the order of exeuction through EXECUTION_ORDER with first DIM tables and then FACT          
   3. TABLES section has 2 types of tables FACT and DIM                                                              
