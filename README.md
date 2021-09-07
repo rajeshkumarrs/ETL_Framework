@@ -1,4 +1,4 @@
-# # CAPSTONE PROJECT - US IMMIGRATION DATA ANALYTICS
+# # ETL Framework - US IMMIGRATION DATA ANALYTICS
 
 ## Scope of the project 
 Project is to gather all immigration data of US along with dimensions like demogprahics, airports, states, temperatures, and create a dataware house with facts and dimensions. This project will be carried out using Spark and, fact and dimension tables are created as parquet files. 
